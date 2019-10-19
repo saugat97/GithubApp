@@ -1,0 +1,42 @@
+﻿
+@model GithubApp.Models.Repositories
+
+@{
+    ViewBag.Title = "Repositories";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+    <h3>An application that lists GitHub repositories by their Star count </h3>
+    <h4><b>Language: </b>C#, <b>Github api: </b><a href="https://api.github.com/search/repositories?q=CSharp&sort=stars&order=desc">https://api.github.com/search/repositories?q=CSharp&sort=stars&order=desc</a></h4>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var item in Model.Items)
+        {
+            <tr>
+                <td>
+                    <b>@Html.DisplayFor(modelItem => item.Full_name)</b><br>
+                    Github URL: <a href="@Html.DisplayFor(modelItem => item.Html_url)">@Html.DisplayFor(modelItem => item.Html_url)</a><br>
+                    Description: @Html.DisplayFor(modelItem => item.Description)<br>
+                    Star count: @Html.DisplayFor(modelItem => item.Stargazers_count)<br>
+                    Repository Name: @Html.DisplayFor(modelItem => item.Name)<br>
+                    Created at:@Html.DisplayFor(modelItem => item.Created_at)<br>
+                    Updated_at: @Html.DisplayFor(modelItem => item.Updated_at)<br>
+                    Clone with HTTPS: <a href="@Html.DisplayFor(modelItem => item.Git_url)">@Html.DisplayFor(modelItem => item.Git_url)</a><br>
+                    Clone with SSH: <a href="@Html.DisplayFor(modelItem => item.Ssh_url)">@Html.DisplayFor(modelItem => item.Ssh_url)</a><br>
+                    Owner Name: @Html.DisplayFor(modelItem => item.Owner.Login)<br>
+                    Owner's info: <a href="@Html.DisplayFor(modelItem => item.Owner.Url)">@Html.DisplayFor(modelItem => item.Owner.Url)</a><br />
+                </td>
+                
+            </tr>
+        }
+    </tbody>
+</table>
